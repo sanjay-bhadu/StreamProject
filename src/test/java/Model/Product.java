@@ -1,7 +1,7 @@
 package Model;
 
 public class Product {
-    private int id;
+    private  int id;
     private String Name;
     private String Category;
     private Double Price;
@@ -13,12 +13,12 @@ public class Product {
         this.Price=Price;
     }
 
-    public int getId() {
+     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+     public void setId(int id) {
+        id = id;
     }
 
     public String getName() {
@@ -44,6 +44,7 @@ public class Product {
     public void setCategory(String category) {
         Category = category;
     }
+
 
     @Override
     public String toString(){

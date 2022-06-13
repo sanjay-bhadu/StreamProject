@@ -69,7 +69,7 @@ public class Main {
 
         //Cheapest price for particular category
 
-    Optional<Product> res=productList.stream()//used optional here as it will take required value or null.
+        Optional<Product> res=productList.stream()//used optional here as it will take required value or null.
                 .filter(r->r.getCategory().equalsIgnoreCase("Book"))
                 .min(Comparator.comparing(Product::getPrice));
         System.out.println(res);
@@ -89,7 +89,7 @@ public class Main {
                 .forEach(System.out::println);
 
         //total order placed in a month
-       Double sum= orderList.stream()
+        Double sum= orderList.stream()
                 .filter(s->s.getOrderDate().isAfter(LocalDate.of(12,12,31)))
                 .filter(p->p.getOrderDate().isBefore(LocalDate.of(13,02,1)))
                 .flatMap(a->a.getProducts().stream())
@@ -113,5 +113,12 @@ public class Main {
                 .mapToDouble(p->p.getPrice())
                 .summaryStatistics();
         System.out.println(ans);
+
+        //Every Category most expensive product
+       Map<String,Optional<Product>> kfl= productList.stream()
+                .collect(Collectors.groupingBy(
+                        Product::getCategory,
+                        Collectors.maxBy(Comparator.comparing(Product::getPrice))
+                ));
     }
 }
